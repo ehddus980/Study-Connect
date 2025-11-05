@@ -3,7 +3,11 @@
 학습용 웹서비스: 캘린더, 스터디룸(화상채팅/화면공유) 예제. Next.js 14 + TypeScript + TailwindCSS 기반.
 
 ## 요구사항
-- Node.js 18+
+- 커서 ai 설치
+- 커서 ai github 연동하기
+- git 설치
+- Node.js 18+ 웹에서 nodejs 설치
+- npm 환경변수추가 자세한 방법은 구글링으로 
 
 ## 설치 및 실행
 ```bash
