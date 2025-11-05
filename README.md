@@ -32,3 +32,4 @@ npm run dev
 - @daily-co/daily-js
 - react-big-calendar
 
+# Study-Connect
