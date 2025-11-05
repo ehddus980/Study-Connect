@@ -36,14 +36,18 @@ export default function DailyCall({ roomUrl }: Props) {
 
   const toggleScreenShare = useCallback(async () => {
     if (!dailyRef.current) return
-    const enabled = await dailyRef.current.startScreenShare()
-    if (!enabled) {
-      await dailyRef.current.stopScreenShare()
+    try {
+      if (sharing) {
+        await dailyRef.current.stopScreenShare()
+        setSharing(false)
+      } else {
+        await dailyRef.current.startScreenShare()
+        setSharing(true)
+      }
+    } catch (e) {
       setSharing(false)
-    } else {
-      setSharing(true)
     }
-  }, [])
+  }, [sharing])
 
   useEffect(() => {
     return () => {

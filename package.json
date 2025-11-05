@@ -13,18 +13,19 @@
     "date-fns": "^4.1.0",
     "next": "14.2.5",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-big-calendar": "^1.16.3"
+    "react-big-calendar": "^1.16.3",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@types/node": "24.10.0",
     "@types/react": "18.3.5",
+    "@types/react-big-calendar": "^1.16.3",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.11.1",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "typescript": "5.6.2"
   }
 }
-

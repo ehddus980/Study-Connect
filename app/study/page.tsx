@@ -1,24 +1,68 @@
 'use client'
 
-import DailyCall from '@/components/daily/DailyCall'
 import { useState } from 'react'
+import JitsiCall from '@/components/jitsi/JitsiCall'
+import DailyCall from '@/components/daily/DailyCall'
+
+type Provider = 'jitsi' | 'daily'
 
 export default function StudyRoomPage() {
+  const [provider, setProvider] = useState<Provider>('jitsi')
+  const [roomName, setRoomName] = useState('study-connect-demo')
   const [roomUrl, setRoomUrl] = useState('')
 
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">스터디룸</h1>
-      <p className="text-sm text-gray-600">Daily 방 URL을 입력해 참여하세요. 예: https://your-domain.daily.co/test-room</p>
-      <div className="flex gap-2">
-        <input
-          value={roomUrl}
-          onChange={e => setRoomUrl(e.target.value)}
-          placeholder="Daily 방 URL"
-          className="flex-1 border rounded-md px-3 py-2"
-        />
+
+      <div className="flex items-center gap-3">
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="radio"
+            name="provider"
+            checked={provider === 'jitsi'}
+            onChange={() => setProvider('jitsi')}
+          />
+          Jitsi
+        </label>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="radio"
+            name="provider"
+            checked={provider === 'daily'}
+            onChange={() => setProvider('daily')}
+          />
+          Daily
+        </label>
       </div>
-      <DailyCall roomUrl={roomUrl} />
+
+      {provider === 'jitsi' ? (
+        <>
+          <p className="text-sm text-gray-600">Jitsi 방 이름을 입력하고 시작하세요. 예: <code>my-team-room</code></p>
+          <div className="flex gap-2">
+            <input
+              value={roomName}
+              onChange={e => setRoomName(e.target.value)}
+              placeholder="Jitsi 방 이름"
+              className="flex-1 border rounded-md px-3 py-2"
+            />
+          </div>
+          <JitsiCall roomName={roomName} />
+        </>
+      ) : (
+        <>
+          <p className="text-sm text-gray-600">Daily 방 URL을 입력해 참여하세요. 예: https://your-domain.daily.co/test-room</p>
+          <div className="flex gap-2">
+            <input
+              value={roomUrl}
+              onChange={e => setRoomUrl(e.target.value)}
+              placeholder="Daily 방 URL"
+              className="flex-1 border rounded-md px-3 py-2"
+            />
+          </div>
+          <DailyCall roomUrl={roomUrl} />
+        </>
+      )}
     </div>
   )
 }

@@ -16,10 +16,10 @@ type EventItem = {
 
 const locales = { ko }
 const localizer = dateFnsLocalizer({
-  format: (date, f) => format(date, f, { locale: ko }),
-  parse: (value, f) => parse(value, f, new Date(), { locale: ko }),
+  format: (date: Date, f: string) => format(date, f as any, { locale: ko }),
+  parse: (value: string, f: string) => parse(value, f as any, new Date(), { locale: ko }),
   startOfWeek: () => startOfWeek(new Date(), { locale: ko }),
-  getDay,
+  getDay: (date: Date) => getDay(date),
   locales: locales as any,
 })
 
@@ -34,8 +34,14 @@ export default function CalendarPage() {
     const raw = typeof window !== 'undefined' ? window.localStorage.getItem('sc.events') : null
     if (raw) {
       try {
-        const parsed = JSON.parse(raw) as Omit<EventItem, 'start' | 'end'> & { start: string; end: string }[]
-        setEvents(parsed.map(e => ({ ...e, start: new Date(e.start), end: new Date(e.end) })))
+        const parsed = JSON.parse(raw) as (Omit<EventItem, 'start' | 'end'> & { start: string; end: string })[]
+        const restored: EventItem[] = parsed.map((e): EventItem => ({
+          id: e.id,
+          title: e.title,
+          start: new Date(e.start),
+          end: new Date(e.end),
+        }))
+        setEvents(restored)
       } catch {}
     }
   }, [])
