@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import JitsiCall from '@/components/jitsi/JitsiCall'
 import DailyCall from '@/components/daily/DailyCall'
+import LocalCvPreview from '@/components/analysis/LocalCvPreview'
 
 type Provider = 'jitsi' | 'daily'
 
@@ -63,6 +64,12 @@ export default function StudyRoomPage() {
           <DailyCall roomUrl={roomUrl} />
         </>
       )}
+
+      <div className="mt-8 space-y-2">
+        <h2 className="text-xl font-semibold">로컬 영상 분석(OpenCV.js)</h2>
+        <p className="text-sm text-gray-600">브라우저에서 OpenCV.js로 별도 카메라 스트림을 받아 엣지 검출을 수행합니다.</p>
+        <LocalCvPreview />
+      </div>
     </div>
   )
 }
