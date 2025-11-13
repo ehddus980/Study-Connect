@@ -1,0 +1,27 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="avatarGradient" x1="20" y1="20" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED" />
+      <stop offset="0.5" stop-color="#8B5CF6" />
+      <stop offset="1" stop-color="#EC4899" />
+    </linearGradient>
+    <linearGradient id="avatarShine" x1="40" y1="30" x2="120" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(255,255,255,0.9)" />
+      <stop offset="1" stop-color="rgba(255,255,255,0.0)" />
+    </linearGradient>
+    <clipPath id="avatarClip">
+      <circle cx="80" cy="80" r="72" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#avatarClip)">
+    <rect x="0" y="0" width="160" height="160" fill="url(#avatarGradient)" />
+    <ellipse cx="80" cy="180" rx="80" ry="70" fill="rgba(255,255,255,0.2)" />
+    <circle cx="80" cy="64" r="34" fill="rgba(255,255,255,0.85)" />
+    <path d="M26 162C28 126 52 104 80 104C108 104 132 126 134 162H26Z" fill="rgba(255,255,255,0.75)" />
+    <circle cx="50" cy="50" r="44" fill="url(#avatarShine)" opacity="0.6" />
+  </g>
+  <circle cx="80" cy="80" r="74" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none" />
+</svg>
+
+
+
